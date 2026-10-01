@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>OKOKOKOK</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="background" id="background"></div>
+
+  <main class="main">
+    <h1>OKOKOKOK</h1>
+
+    <p>OK OK OK OK OK OK OK</p>
+
+    <button onclick="createOK(event)">
+      CLICK FOR MORE OK
+    </button>
+  </main>
+
+  <script>
+    const background = document.getElementById("background");
+
+    // Fill the screen with OK
+    for (let i = 0; i < 150; i++) {
+      const span = document.createElement("span");
+
+      span.innerText = "OKOKOK";
+
+      span.style.fontSize =
+        `${15 + Math.random() * 30}px`;
+
+      span.style.animationDelay =
+        `${Math.random() * 3}s`;
+
+      background.appendChild(span);
+    }
+
+    // OK explosion
+    function createOK(event) {
+
+      for (let i = 0; i < 30; i++) {
+
+        const ok = document.createElement("div");
+
+        ok.className = "ok";
+        ok.innerText = "OKOK";
+
+        ok.style.left = event.clientX + "px";
+        ok.style.top = event.clientY + "px";
+
+        ok.style.setProperty(
+          "--x",
+          Math.random() * 200 - 100
+        );
+
+        ok.style.setProperty(
+          "--y",
+          Math.random() * 200 - 100
+        );
+
+        document.body.appendChild(ok);
+
+        setTimeout(() => {
+          ok.remove();
+        }, 1000);
+      }
+    }
+
+    // Click anywhere
+    document.addEventListener("click", function(event) {
+
+      if (event.target.tagName !== "BUTTON") {
+        createOK(event);
+      }
+
+    });
+  </script>
+
+</body>
+</html>

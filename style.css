@@ -1,0 +1,303 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
+
+  background: #000;
+
+  color: #00ff88;
+
+  font-family: Arial, sans-serif;
+
+  position: relative;
+}
+
+
+/* =========================
+   BACKGROUND OKOKOK
+========================= */
+
+.background {
+  position: absolute;
+
+  inset: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fill, minmax(130px, 1fr));
+
+  gap: 15px;
+
+  padding: 20px;
+
+  opacity: 0.35;
+
+  overflow: hidden;
+}
+
+.background span {
+  font-size: 25px;
+
+  font-weight: 900;
+
+  text-align: center;
+
+  animation: float 3s infinite alternate ease-in-out;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.main {
+  position: relative;
+
+  z-index: 5;
+
+  height: 100vh;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  flex-direction: column;
+
+  text-align: center;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0, 255, 136, 0.18),
+      transparent 55%
+    );
+}
+
+
+/* =========================
+   BIG OK
+========================= */
+
+h1 {
+  font-size: clamp(55px, 12vw, 160px);
+
+  font-weight: 900;
+
+  letter-spacing: 5px;
+
+  color: #00ff88;
+
+  text-shadow:
+    0 0 10px #00ff88,
+    0 0 30px #00ff88,
+    0 0 60px #00ff88,
+    0 0 100px #00ff88;
+
+  animation: pulse 1s infinite alternate;
+}
+
+
+/* =========================
+   SMALL OK
+========================= */
+
+p {
+  margin-top: 20px;
+
+  font-size: 25px;
+
+  font-weight: bold;
+
+  letter-spacing: 8px;
+
+  text-shadow:
+    0 0 10px #00ff88;
+
+  animation: shake 0.5s infinite;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+button {
+  margin-top: 35px;
+
+  padding: 15px 35px;
+
+  border: 2px solid #00ff88;
+
+  border-radius: 50px;
+
+  background: transparent;
+
+  color: #00ff88;
+
+  font-size: 20px;
+
+  font-weight: bold;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 0 10px #00ff88,
+    0 0 30px rgba(0, 255, 136, 0.5);
+
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #00ff88;
+
+  color: #000;
+
+  transform: scale(1.1);
+
+  box-shadow:
+    0 0 20px #00ff88,
+    0 0 50px #00ff88;
+}
+
+
+/* =========================
+   CLICK OK
+========================= */
+
+.ok {
+  position: fixed;
+
+  pointer-events: none;
+
+  font-size: 30px;
+
+  font-weight: 900;
+
+  color: #00ff88;
+
+  text-shadow:
+    0 0 10px #00ff88,
+    0 0 30px #00ff88;
+
+  z-index: 100;
+
+  animation: explode 1s forwards;
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes pulse {
+
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.08);
+  }
+
+}
+
+
+@keyframes float {
+
+  from {
+    transform:
+      translateY(-15px)
+      rotate(-3deg);
+  }
+
+  to {
+    transform:
+      translateY(15px)
+      rotate(3deg);
+  }
+
+}
+
+
+@keyframes shake {
+
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(4px);
+  }
+
+  50% {
+    transform: translateX(-4px);
+  }
+
+  75% {
+    transform: translateX(4px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+
+}
+
+
+@keyframes explode {
+
+  0% {
+    transform:
+      translate(0, 0)
+      scale(0.5);
+
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      translate(
+        calc(var(--x) * 3px),
+        calc(var(--y) * 3px)
+      )
+      scale(2);
+
+    opacity: 0;
+  }
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  h1 {
+    font-size: 55px;
+
+    letter-spacing: 2px;
+  }
+
+  p {
+    font-size: 15px;
+
+    letter-spacing: 3px;
+  }
+
+  button {
+    font-size: 16px;
+
+    padding: 12px 25px;
+  }
+
+}
